@@ -1,8 +1,10 @@
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 name: Update HaasBot Report
 
 on:
   schedule:
-    - cron: '*/2 * * * *'   # כל 2 דקות
+    - cron: '*/5 * * * *'   # כל 2 דקות
   workflow_dispatch:          # אפשרות הפעלה ידנית
 
 jobs:
@@ -36,4 +38,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
           publish_branch: gh-pages
-          include_files: index.html
