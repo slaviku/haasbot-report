@@ -260,6 +260,7 @@ def bot_detail_html(bot_id, data, now_str):
     return f"""<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="120">
 <title>{bot_name} — HaasBot Report</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>{CSS}</style>
@@ -283,7 +284,7 @@ def bot_detail_html(bot_id, data, now_str):
   <div class="status-row">
     {status_pill}
     <span class="pill pill-gray">Script: {data.get('ScriptName','—')}</span>
-    <span class="pill pill-gray">Leverage: {data.get('Leverage', rep.get('O',{{}}).get('BW','—'))}x</span>
+    <span class="pill pill-gray">Leverage: {data.get('Leverage') or '—'}x</span>
     <span class="updated">Updated: {now_str}</span>
   </div>
 
@@ -424,6 +425,7 @@ def index_html(bots_data, now_str):
     return f"""<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="120">
 <title>HaasBot Live Reports</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>{CSS}</style>
