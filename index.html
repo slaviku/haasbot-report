@@ -1,164 +1,211 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HaasBot Live Report</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="120">
+<title>HaasBot Live Reports</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#0d1117;color:#e6edf3;font-family:'Inter',sans-serif;padding:2rem 1rem 4rem}
-h1{font-size:1.5rem;font-weight:700;margin-bottom:.25rem}
-.sub{color:#8b949e;font-size:.9rem;margin-bottom:2rem}
-.card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;max-width:860px;margin-left:auto;margin-right:auto}
-.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
-.market{font-family:'IBM Plex Mono',monospace;font-size:.85rem;background:#1c2128;border:1px solid #388bfd44;color:#58a6ff;padding:4px 12px;border-radius:20px}
-.updated{font-size:.75rem;color:#484f58}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.25rem}
-@media(max-width:500px){.metrics{grid-template-columns:repeat(2,1fr)}}
-.metric{background:#0d1117;border-radius:8px;padding:.75rem 1rem}
-.mlabel{font-size:.72rem;color:#8b949e;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
-.mval{font-size:1.3rem;font-weight:600}
-.spark-row{display:flex;gap:2rem;margin-bottom:1rem}
-.slabel{font-size:.72rem;color:#8b949e;margin-bottom:2px}
-.spark{font-family:'IBM Plex Mono',monospace;font-size:1.2rem;color:#3fb950;letter-spacing:2px}
-.extra{font-size:.8rem;color:#8b949e;border-top:1px solid #21262d;padding-top:.75rem;margin-top:.25rem}
-.extra b{color:#e6edf3}
-.footer{text-align:center;color:#484f58;font-size:.75rem;margin-top:2rem}
-</style></head><body>
-<div style="max-width:860px;margin:0 auto">
-<h1>📊 HaasBot Live Report</h1>
-<div class="sub">Auto-updated every 2 minutes via GitHub Actions</div>
+:root {
+  --bg: #0d1117; --surface: #161b22; --surface2: #1c2128;
+  --border: #30363d; --green: #3fb950; --red: #f85149;
+  --blue: #58a6ff; --text: #e6edf3; --text2: #8b949e; --text3: #484f58;
+  --orange: #f0883e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-    <div class="card" id="a5696170491340f785edfc952ffe5f86">
-      <div class="card-top">
-        <div><span class="market">BYBITUSDT_BTC_USDT_PERPETUAL</span></div>
-        <span class="updated">Updated 27/05/2026 10:35 UTC</span>
-      </div>
-      <div class="metrics">
-        <div class="metric"><div class="mlabel">Realized Profit</div>
-          <div class="mval" style="color:#3fb950">$87.81</div></div>
-        <div class="metric"><div class="mlabel">ROI</div>
-          <div class="mval" style="color:#3fb950">+461.27%</div></div>
-        <div class="metric"><div class="mlabel">Win Rate</div>
-          <div class="mval">100.0%</div></div>
-        <div class="metric"><div class="mlabel">Avg Monthly</div>
-          <div class="mval">$19.04</div></div>
-        <div class="metric"><div class="mlabel">Best Trade</div>
-          <div class="mval">$25.85</div></div>
-        <div class="metric"><div class="mlabel">Runtime</div>
-          <div class="mval">362h</div></div>
-      </div>
-      <div class="spark-row">
-        <div><div class="slabel">ROI trend</div>
-          <div class="spark">▃▃▄▄▅▅▆▆▇▇██</div></div>
-        <div><div class="slabel">Profit trend</div>
-          <div class="spark">▄▅▆▆▆▇▇▇▇███</div></div>
-      </div>
-      <div class="extra">
-        Closed trades: <b>732</b> &nbsp;·&nbsp;
-        Winning: <b>19/19</b> &nbsp;·&nbsp;
-        Fees: <b>$16.16</b> &nbsp;·&nbsp;
-        Unrealized P&L: <b>−$85.23</b>
-      </div>
-    </div>
+/* NAV */
+.nav { background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem; display: flex; align-items: center; gap: 1rem; height: 52px; }
+.nav-brand { font-weight: 700; font-size: 1rem; color: var(--text); }
+.nav-sub { font-size: 12px; color: var(--text2); margin-top: 1px; }
+.nav-links { margin-left: auto; display: flex; gap: 1rem; font-size: 13px; }
 
-    <div class="card" id="55b91f3d523a4e30985c6dd8b8b991a1">
-      <div class="card-top">
-        <div><span class="market">BYBITUSDT_BTC_USDT_PERPETUAL</span></div>
-        <span class="updated">Updated 27/05/2026 10:35 UTC</span>
-      </div>
-      <div class="metrics">
-        <div class="metric"><div class="mlabel">Realized Profit</div>
-          <div class="mval" style="color:#3fb950">$31.78</div></div>
-        <div class="metric"><div class="mlabel">ROI</div>
-          <div class="mval" style="color:#3fb950">+262.37%</div></div>
-        <div class="metric"><div class="mlabel">Win Rate</div>
-          <div class="mval">100.0%</div></div>
-        <div class="metric"><div class="mlabel">Avg Monthly</div>
-          <div class="mval">$12.11</div></div>
-        <div class="metric"><div class="mlabel">Best Trade</div>
-          <div class="mval">$13.13</div></div>
-        <div class="metric"><div class="mlabel">Runtime</div>
-          <div class="mval">85h</div></div>
-      </div>
-      <div class="spark-row">
-        <div><div class="slabel">ROI trend</div>
-          <div class="spark"> ▁▂▂▄▅█</div></div>
-        <div><div class="slabel">Profit trend</div>
-          <div class="spark"> ▁▁▂▄▅█</div></div>
-      </div>
-      <div class="extra">
-        Closed trades: <b>313</b> &nbsp;·&nbsp;
-        Winning: <b>7/7</b> &nbsp;·&nbsp;
-        Fees: <b>$4.92</b> &nbsp;·&nbsp;
-        Unrealized P&L: <b>−$78.46</b>
-      </div>
-    </div>
+/* PAGE */
+.page { max-width: 960px; margin: 0 auto; padding: 2rem 1rem 5rem; }
+h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text); }
+h3 { font-size: 1rem; font-weight: 600; color: var(--text2); text-transform: uppercase;
+  letter-spacing: .06em; margin-bottom: 1rem; margin-top: 2rem; }
 
-    <div class="card" id="22f1c87e443d4a26a507cf5f684d01a4">
-      <div class="card-top">
-        <div><span class="market">BYBITUSDT_BTC_USDT_PERPETUAL</span></div>
-        <span class="updated">Updated 27/05/2026 10:35 UTC</span>
-      </div>
-      <div class="metrics">
-        <div class="metric"><div class="mlabel">Realized Profit</div>
-          <div class="mval" style="color:#3fb950">$175.02</div></div>
-        <div class="metric"><div class="mlabel">ROI</div>
-          <div class="mval" style="color:#3fb950">+1038.40%</div></div>
-        <div class="metric"><div class="mlabel">Win Rate</div>
-          <div class="mval">100.0%</div></div>
-        <div class="metric"><div class="mlabel">Avg Monthly</div>
-          <div class="mval">$16.85</div></div>
-        <div class="metric"><div class="mlabel">Best Trade</div>
-          <div class="mval">$21.80</div></div>
-        <div class="metric"><div class="mlabel">Runtime</div>
-          <div class="mval">742h</div></div>
-      </div>
-      <div class="spark-row">
-        <div><div class="slabel">ROI trend</div>
-          <div class="spark">▄▄▄▅▅▆▆▆▇▇██</div></div>
-        <div><div class="slabel">Profit trend</div>
-          <div class="spark">▄▅▅▆▆▆▆▆▇▇██</div></div>
-      </div>
-      <div class="extra">
-        Closed trades: <b>1,400</b> &nbsp;·&nbsp;
-        Winning: <b>44/44</b> &nbsp;·&nbsp;
-        Fees: <b>$31.83</b> &nbsp;·&nbsp;
-        Unrealized P&L: <b>−$98.44</b>
-      </div>
-    </div>
+/* BOT CARD (index) */
+.bot-list { display: grid; gap: 1rem; }
+.bot-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center;
+  transition: border-color .15s; }
+.bot-card:hover { border-color: var(--blue); }
+.bot-name { font-weight: 600; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
+.bot-market { font-size: 12px; color: var(--text2); font-family: monospace; }
+.bot-stats { display: flex; gap: 2rem; align-items: center; }
+.bs-item { text-align: right; }
+.bs-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .05em; }
+.bs-val { font-size: 1.1rem; font-weight: 600; margin-top: 2px; }
+.btn-view { background: var(--blue); color: #fff; border: none; border-radius: 8px;
+  padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; }
 
-    <div class="card" id="13a9d10df270471dac948423d33c8cf7">
-      <div class="card-top">
-        <div><span class="market">BYBITUSDT_BTC_USDT_PERPETUAL</span></div>
-        <span class="updated">Updated 27/05/2026 10:35 UTC</span>
-      </div>
-      <div class="metrics">
-        <div class="metric"><div class="mlabel">Realized Profit</div>
-          <div class="mval" style="color:#3fb950">$165.04</div></div>
-        <div class="metric"><div class="mlabel">ROI</div>
-          <div class="mval" style="color:#3fb950">+966.60%</div></div>
-        <div class="metric"><div class="mlabel">Win Rate</div>
-          <div class="mval">100.0%</div></div>
-        <div class="metric"><div class="mlabel">Avg Monthly</div>
-          <div class="mval">$17.07</div></div>
-        <div class="metric"><div class="mlabel">Best Trade</div>
-          <div class="mval">$20.09</div></div>
-        <div class="metric"><div class="mlabel">Runtime</div>
-          <div class="mval">683h</div></div>
-      </div>
-      <div class="spark-row">
-        <div><div class="slabel">ROI trend</div>
-          <div class="spark">▄▄▅▅▅▆▆▆▇▇██</div></div>
-        <div><div class="slabel">Profit trend</div>
-          <div class="spark">▄▄▅▆▆▆▆▆▇▇██</div></div>
-      </div>
-      <div class="extra">
-        Closed trades: <b>1,195</b> &nbsp;·&nbsp;
-        Winning: <b>40/40</b> &nbsp;·&nbsp;
-        Fees: <b>$29.48</b> &nbsp;·&nbsp;
-        Unrealized P&L: <b>−$98.44</b>
-      </div>
-    </div>
-<div class="footer">Last build: 27/05/2026 10:35 UTC · Powered by HaasBot + GitHub Pages</div>
-</div></body></html>
+/* METRICS GRID */
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-bottom: 1.5rem; }
+@media(max-width:640px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
+.metric { background: var(--surface2); border-radius: 10px; padding: .9rem 1rem; }
+.m-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+.m-val { font-size: 1.25rem; font-weight: 600; }
+.m-sub { font-size: 11px; color: var(--text3); margin-top: 3px; }
+
+/* SECTION CARD */
+.section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+.section-title { font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--text2); margin-bottom: 1rem; }
+.divider { height: 1px; background: var(--border); margin: 1rem 0; }
+
+/* SPARKLINE */
+.spark-row { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+.spark-item .sp-label { font-size: 11px; color: var(--text3); margin-bottom: 3px; }
+.spark-item .sp-val { font-family: monospace; font-size: 1.1rem; color: var(--green); letter-spacing: 2px; }
+
+/* POSITION */
+.position-card { background: var(--surface2); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: .75rem; }
+.pos-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .75rem; }
+.pos-dir { font-size: 1rem; font-weight: 700; }
+.pos-pnl { font-size: 1rem; font-weight: 700; }
+.pos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+@media(max-width:540px) { .pos-grid { grid-template-columns: repeat(2, 1fr); } }
+.ps-label { font-size: 11px; color: var(--text3); margin-bottom: 2px; }
+.ps-val { font-size: .9rem; font-weight: 500; }
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th { text-align: left; color: var(--text3); font-size: 11px; text-transform: uppercase;
+  letter-spacing: .05em; padding: 6px 10px 8px; border-bottom: 1px solid var(--border); }
+.data-table td { padding: 8px 10px; border-bottom: 1px solid #21262d; color: var(--text); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--surface2); }
+.tag { background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+  font-size: 11px; padding: 1px 6px; color: var(--text2); font-family: monospace; }
+.ts { color: var(--text3); font-size: 12px; }
+.no-data { color: var(--text3); font-size: 13px; padding: .5rem 0; }
+
+/* STATUS */
+.status-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.pill { font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 1px solid; font-weight: 500; }
+.pill-green { background: #1a3726; border-color: var(--green); color: var(--green); }
+.pill-gray  { background: #21262d; border-color: var(--border); color: var(--text2); }
+.pill-red   { background: #3d1515; border-color: var(--red); color: var(--red); }
+.updated { font-size: 12px; color: var(--text3); margin-left: auto; }
+
+/* BOT DETAIL HEADER */
+.bot-header { margin-bottom: 2rem; }
+.bot-header .bh-name { font-size: 1.5rem; font-weight: 700; margin-bottom: .25rem; }
+.bot-header .bh-meta { font-size: 13px; color: var(--text2); }
+
+.footer { text-align: center; color: var(--text3); font-size: 12px; margin-top: 3rem; }
+</style>
+</head><body>
+<nav class="nav">
+  <div>
+    <div class="nav-brand">📊 HaasBot Reports</div>
+    <div class="nav-sub">Auto-updated every 2 minutes</div>
+  </div>
+  <div class="nav-links">
+    <span style="color:var(--text2);font-size:12px">27/05/2026 11:16 UTC</span>
+  </div>
+</nav>
+<div class="page">
+  <h2>All Bots (4)</h2>
+  <div class="bot-list">
+        <a href="bot_a5696170491340f785edfc952ffe5f86.html" style="display:block;text-decoration:none">
+          <div class="bot-card">
+            <div>
+              <div class="bot-name">🟢 [LIVE ][Slavik]Futures - BTC - SMMDHv2.56 </div>
+              <div class="bot-market">BYBITUSDT_BTC_USDT_PERPETUAL</div>
+            </div>
+            <div class="bot-stats">
+              <div class="bs-item">
+                <div class="bs-label">Profit</div>
+                <div class="bs-val" style="color:#3fb950">$87.81</div>
+              </div>
+              <div class="bs-item">
+                <div class="bs-label">ROI</div>
+                <div class="bs-val" style="color:#3fb950">+461.27%</div>
+              </div>
+              <div class="bs-item">
+                <div class="bs-label">Win Rate</div>
+                <div class="bs-val">100%</div>
+              </div>
+              <div class="btn-view">View →</div>
+            </div>
+          </div>
+        </a>
+        <a href="bot_55b91f3d523a4e30985c6dd8b8b991a1.html" style="display:block;text-decoration:none">
+          <div class="bot-card">
+            <div>
+              <div class="bot-name">🟢 [LIVE][CUST] Ariel Danino</div>
+              <div class="bot-market">BYBITUSDT_BTC_USDT_PERPETUAL</div>
+            </div>
+            <div class="bot-stats">
+              <div class="bs-item">
+                <div class="bs-label">Profit</div>
+                <div class="bs-val" style="color:#3fb950">$31.78</div>
+              </div>
+              <div class="bs-item">
+                <div class="bs-label">ROI</div>
+                <div class="bs-val" style="color:#3fb950">+262.37%</div>
+              </div>
+              <div class="bs-item">
+                <div class="bs-label">Win Rate</div>
+                <div class="bs-val">100%</div>
+              </div>
+              <div class="btn-view">View →</div>
+            </div>
+          </div>
+        </a>
+        <a href="bot_22f1c87e443d4a26a507cf5f684d01a4.html" style="display:block;text-decoration:none">
+          <div class="bot-card">
+            <div>
+              <div class="bot-name">🟢 [LIVE][CUST] Noam Yosef</div>
+              <div class="bot-market">BYBITUSDT_BTC_USDT_PERPETUAL</div>
+            </div>
+            <div class="bot-stats">
+              <div class="bs-item">
+                <div class="bs-label">Profit</div>
+                <div class="bs-val" style="color:#3fb950">$175.02</div>
+              </div>
+              <div class="bs-item">
+                <div class="bs-label">ROI</div>
+                <div class="bs-val" style="color:#3fb950">+1038.40%</div>
+              </div>
+              <div class="bs-item">
+                <div class="bs-label">Win Rate</div>
+                <div class="bs-val">100%</div>
+              </div>
+              <div class="btn-view">View →</div>
+            </div>
+          </div>
+        </a>
+        <a href="bot_13a9d10df270471dac948423d33c8cf7.html" style="display:block;text-decoration:none">
+          <div class="bot-card">
+            <div>
+              <div class="bot-name">🟢 [Live][CUST]Shlomi Goldberg</div>
+              <div class="bot-market">BYBITUSDT_BTC_USDT_PERPETUAL</div>
+            </div>
+            <div class="bot-stats">
+              <div class="bs-item">
+                <div class="bs-label">Profit</div>
+                <div class="bs-val" style="color:#3fb950">$165.04</div>
+              </div>
+              <div class="bs-item">
+                <div class="bs-label">ROI</div>
+                <div class="bs-val" style="color:#3fb950">+966.60%</div>
+              </div>
+              <div class="bs-item">
+                <div class="bs-label">Win Rate</div>
+                <div class="bs-val">100%</div>
+              </div>
+              <div class="btn-view">View →</div>
+            </div>
+          </div>
+        </a></div>
+</div>
+<div class="footer">Last build: 27/05/2026 11:16 UTC · HaasBot + GitHub Pages</div>
+</body></html>

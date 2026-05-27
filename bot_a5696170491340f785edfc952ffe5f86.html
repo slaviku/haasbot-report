@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="refresh" content="120">
+<title>[LIVE ][Slavik]Futures - BTC - SMMDHv2.56  — HaasBot Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d1117; --surface: #161b22; --surface2: #1c2128;
+  --border: #30363d; --green: #3fb950; --red: #f85149;
+  --blue: #58a6ff; --text: #e6edf3; --text2: #8b949e; --text3: #484f58;
+  --orange: #f0883e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* NAV */
+.nav { background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem; display: flex; align-items: center; gap: 1rem; height: 52px; }
+.nav-brand { font-weight: 700; font-size: 1rem; color: var(--text); }
+.nav-sub { font-size: 12px; color: var(--text2); margin-top: 1px; }
+.nav-links { margin-left: auto; display: flex; gap: 1rem; font-size: 13px; }
+
+/* PAGE */
+.page { max-width: 960px; margin: 0 auto; padding: 2rem 1rem 5rem; }
+h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text); }
+h3 { font-size: 1rem; font-weight: 600; color: var(--text2); text-transform: uppercase;
+  letter-spacing: .06em; margin-bottom: 1rem; margin-top: 2rem; }
+
+/* BOT CARD (index) */
+.bot-list { display: grid; gap: 1rem; }
+.bot-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center;
+  transition: border-color .15s; }
+.bot-card:hover { border-color: var(--blue); }
+.bot-name { font-weight: 600; font-size: 1rem; color: var(--text); margin-bottom: 4px; }
+.bot-market { font-size: 12px; color: var(--text2); font-family: monospace; }
+.bot-stats { display: flex; gap: 2rem; align-items: center; }
+.bs-item { text-align: right; }
+.bs-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .05em; }
+.bs-val { font-size: 1.1rem; font-weight: 600; margin-top: 2px; }
+.btn-view { background: var(--blue); color: #fff; border: none; border-radius: 8px;
+  padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+
+/* METRICS GRID */
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-bottom: 1.5rem; }
+@media(max-width:640px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
+.metric { background: var(--surface2); border-radius: 10px; padding: .9rem 1rem; }
+.m-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+.m-val { font-size: 1.25rem; font-weight: 600; }
+.m-sub { font-size: 11px; color: var(--text3); margin-top: 3px; }
+
+/* SECTION CARD */
+.section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+.section-title { font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--text2); margin-bottom: 1rem; }
+.divider { height: 1px; background: var(--border); margin: 1rem 0; }
+
+/* SPARKLINE */
+.spark-row { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+.spark-item .sp-label { font-size: 11px; color: var(--text3); margin-bottom: 3px; }
+.spark-item .sp-val { font-family: monospace; font-size: 1.1rem; color: var(--green); letter-spacing: 2px; }
+
+/* POSITION */
+.position-card { background: var(--surface2); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: .75rem; }
+.pos-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: .75rem; }
+.pos-dir { font-size: 1rem; font-weight: 700; }
+.pos-pnl { font-size: 1rem; font-weight: 700; }
+.pos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+@media(max-width:540px) { .pos-grid { grid-template-columns: repeat(2, 1fr); } }
+.ps-label { font-size: 11px; color: var(--text3); margin-bottom: 2px; }
+.ps-val { font-size: .9rem; font-weight: 500; }
+
+/* TABLE */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th { text-align: left; color: var(--text3); font-size: 11px; text-transform: uppercase;
+  letter-spacing: .05em; padding: 6px 10px 8px; border-bottom: 1px solid var(--border); }
+.data-table td { padding: 8px 10px; border-bottom: 1px solid #21262d; color: var(--text); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--surface2); }
+.tag { background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
+  font-size: 11px; padding: 1px 6px; color: var(--text2); font-family: monospace; }
+.ts { color: var(--text3); font-size: 12px; }
+.no-data { color: var(--text3); font-size: 13px; padding: .5rem 0; }
+
+/* STATUS */
+.status-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.pill { font-size: 12px; padding: 3px 10px; border-radius: 20px; border: 1px solid; font-weight: 500; }
+.pill-green { background: #1a3726; border-color: var(--green); color: var(--green); }
+.pill-gray  { background: #21262d; border-color: var(--border); color: var(--text2); }
+.pill-red   { background: #3d1515; border-color: var(--red); color: var(--red); }
+.updated { font-size: 12px; color: var(--text3); margin-left: auto; }
+
+/* BOT DETAIL HEADER */
+.bot-header { margin-bottom: 2rem; }
+.bot-header .bh-name { font-size: 1.5rem; font-weight: 700; margin-bottom: .25rem; }
+.bot-header .bh-meta { font-size: 13px; color: var(--text2); }
+
+.footer { text-align: center; color: var(--text3); font-size: 12px; margin-top: 3rem; }
+</style>
+</head><body>
+<nav class="nav">
+  <div>
+    <div class="nav-brand">📊 HaasBot Reports</div>
+    <div class="nav-sub">Auto-updated every 2 minutes</div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">← All Bots</a>
+  </div>
+</nav>
+<div class="page">
+
+  <div class="bot-header">
+    <div class="bh-name">[LIVE ][Slavik]Futures - BTC - SMMDHv2.56 </div>
+    <div class="bh-meta">Market: <strong>BYBITUSDT_BTC_USDT_PERPETUAL</strong> &nbsp;·&nbsp; Bot ID: <code style="font-size:11px;color:var(--text2)">a5696170491340f785edfc952ffe5f86</code></div>
+  </div>
+
+  <div class="status-row">
+    <span class="pill pill-green">● Active</span>
+    <span class="pill pill-gray">Script: SMMDHv2.56</span>
+    <span class="pill pill-gray">Leverage: —x</span>
+    <span class="updated">Updated: 27/05/2026 11:16 UTC</span>
+  </div>
+
+  <!-- Performance metrics -->
+  <div class="metrics">
+    <div class="metric">
+      <div class="m-label">Realized Profit</div>
+      <div class="m-val" style="color:#3fb950">$87.81</div>
+    </div>
+    <div class="metric">
+      <div class="m-label">ROI</div>
+      <div class="m-val" style="color:#3fb950">+461.27%</div>
+    </div>
+    <div class="metric">
+      <div class="m-label">Unrealized P&L</div>
+      <div class="m-val" style="color:#f85149">−$72.50</div>
+    </div>
+    <div class="metric">
+      <div class="m-label">Avg Monthly</div>
+      <div class="m-val">$19.04</div>
+    </div>
+    <div class="metric">
+      <div class="m-label">Gross Profit</div>
+      <div class="m-val">$103.97</div>
+    </div>
+    <div class="metric">
+      <div class="m-label">Fees Paid</div>
+      <div class="m-val">$16.16</div>
+    </div>
+    <div class="metric">
+      <div class="m-label">Win Rate</div>
+      <div class="m-val">100.0%</div>
+      <div class="m-sub">19 / 19 trades</div>
+    </div>
+    <div class="metric">
+      <div class="m-label">Current Price</div>
+      <div class="m-val">$77,831</div>
+    </div>
+  </div>
+
+  <!-- Sparklines -->
+  <div class="section">
+    <div class="section-title">Trend</div>
+    <div class="spark-row">
+      <div class="spark-item">
+        <div class="sp-label">ROI trend</div>
+        <div class="sp-val">▂▂▃▃▃▄▄▅▅▆▆▇▇██</div>
+      </div>
+      <div class="spark-item">
+        <div class="sp-label">Profit trend</div>
+        <div class="sp-val">▁▁▄▄▅▆▆▆▇▇▇▇███</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trade stats -->
+  <div class="section">
+    <div class="section-title">Trade Statistics</div>
+    <div class="pos-grid">
+      <div class="pos-stat"><div class="ps-label">Closed Trades</div><div class="ps-val">736</div></div>
+      <div class="pos-stat"><div class="ps-label">Best Trade</div><div class="ps-val" style="color:var(--green)">$25.85</div></div>
+      <div class="pos-stat"><div class="ps-label">Avg Profit/Trade</div><div class="ps-val">$4.71</div></div>
+      <div class="pos-stat"><div class="ps-label">Profit Factor</div><div class="ps-val">1.00</div></div>
+      <div class="pos-stat"><div class="ps-label">Peak Profit</div><div class="ps-val">$86.70</div></div>
+      <div class="pos-stat"><div class="ps-label">Lowest Profit</div><div class="ps-val">−$0.17</div></div>
+      <div class="pos-stat"><div class="ps-label">Runtime</div><div class="ps-val">362h</div></div>
+      <div class="pos-stat"><div class="ps-label">Orders Issued</div><div class="ps-val">2,472</div></div>
+      <div class="pos-stat"><div class="ps-label">Buy %</div><div class="ps-val">30.2%</div></div>
+    </div>
+  </div>
+
+  <!-- Open Positions -->
+  <h3>📍 Open Positions (1)</h3>
+  <div class="section">
+    
+        <div class="position-card">
+          <div class="pos-header">
+            <span class="pos-dir" style="color:#3fb950">🟢 Long</span>
+            <span class="pos-pnl" style="color:#f85149">−$75.53 &nbsp; (-89.60%)</span>
+          </div>
+          <div class="pos-grid">
+            <div class="pos-stat"><div class="ps-label">Size</div><div class="ps-val">0.1100 BTC</div></div>
+            <div class="pos-stat"><div class="ps-label">Avg Entry</div><div class="ps-val">$76,635</div></div>
+            <div class="pos-stat"><div class="ps-label">Current Price</div><div class="ps-val">$77,831</div></div>
+            <div class="pos-stat"><div class="ps-label">Entries</div><div class="ps-val">9 orders</div></div>
+            <div class="pos-stat"><div class="ps-label">Opened</div><div class="ps-val">26/05/2026 14:32 UTC</div></div>
+            <div class="pos-stat"><div class="ps-label">Fees Paid</div><div class="ps-val">$1.69</div></div>
+          </div>
+        </div>
+  </div>
+
+  <!-- Open Orders -->
+  <h3>📋 Open Orders (4)</h3>
+  <div class="section">
+    
+    <table class="data-table">
+      <thead><tr><th>Side / Name</th><th>Price</th><th>Amount</th><th>Opened</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span style="color:#3fb950;font-weight:600">Long</span> <span class="tag">L2</span></td>
+          <td>$74,982</td>
+          <td>0.0220 BTC</td>
+          <td class="ts">27/05/2026 10:39 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#3fb950;font-weight:600">Long</span> <span class="tag">L1</span></td>
+          <td>$75,577</td>
+          <td>0.0110 BTC</td>
+          <td class="ts">27/05/2026 10:56 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#f85149;font-weight:600">Short</span> <span class="tag">S1</span></td>
+          <td>$76,379</td>
+          <td>0.0110 BTC</td>
+          <td class="ts">27/05/2026 11:04 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#f85149;font-weight:600">Short</span> <span class="tag">S2</span></td>
+          <td>$77,237</td>
+          <td>0.0220 BTC</td>
+          <td class="ts">27/05/2026 11:04 UTC</td>
+        </tr></tbody>
+    </table>
+  </div>
+
+  <!-- Closed Positions -->
+  <h3>✅ Last 10 Closed Positions</h3>
+  <div class="section">
+    
+    <table class="data-table">
+      <thead><tr><th>Side</th><th>Entry</th><th>Size</th><th>P&L</th><th>ROI</th><th>Closed</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span style="color:#3fb950">Long</span></td>
+          <td>$76,440</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$4.03</td>
+          <td>+23.96%</td>
+          <td class="ts">24/05/2026 16:17 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#3fb950">Long</span></td>
+          <td>$76,261</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$3.58</td>
+          <td>+42.72%</td>
+          <td class="ts">24/05/2026 22:05 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#3fb950">Long</span></td>
+          <td>$77,127</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$2.40</td>
+          <td>+28.25%</td>
+          <td class="ts">25/05/2026 04:52 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#3fb950">Long</span></td>
+          <td>$77,003</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$1.71</td>
+          <td>+20.21%</td>
+          <td class="ts">25/05/2026 22:50 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#f85149">Short</span></td>
+          <td>$76,693</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$1.65</td>
+          <td>+19.57%</td>
+          <td class="ts">26/05/2026 03:25 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#3fb950">Long</span></td>
+          <td>$76,832</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$6.70</td>
+          <td>+39.64%</td>
+          <td class="ts">26/05/2026 10:28 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#f85149">Short</span></td>
+          <td>$77,222</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$1.75</td>
+          <td>+20.57%</td>
+          <td class="ts">26/05/2026 12:07 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#3fb950">Long</span></td>
+          <td>$76,860</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$1.69</td>
+          <td>+20.00%</td>
+          <td class="ts">26/05/2026 12:15 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#f85149">Short</span></td>
+          <td>$77,327</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$1.68</td>
+          <td>+19.77%</td>
+          <td class="ts">26/05/2026 13:54 UTC</td>
+        </tr>
+        <tr>
+          <td><span style="color:#f85149">Short</span></td>
+          <td>$77,714</td>
+          <td>0.0000 BTC</td>
+          <td style="color:#3fb950;font-weight:600">$2.46</td>
+          <td>+28.73%</td>
+          <td class="ts">26/05/2026 14:35 UTC</td>
+        </tr></tbody>
+    </table>
+  </div>
+
+  <!-- Custom Report -->
+  <div class="section"><div class="section-title">Custom Report</div><div class="pos-grid"><div class="pos-stat"><div class="ps-label">Final Wallet Balance</div><div class="ps-val">2135.07642 USDT</div></div><div class="pos-stat"><div class="ps-label">Size Reduction</div><div class="ps-val">0 times</div></div><div class="pos-stat"><div class="ps-label">Highest Balance Ratio</div><div class="ps-val">17.04%</div></div><div class="pos-stat"><div class="ps-label">Profit %: </div><div class="ps-val">113.51%</div></div><div class="pos-stat"><div class="ps-label">Profit to Highest Bal. Ratio</div><div class="ps-val">6.66</div></div></div></div>
+
+</div>
+<div class="footer">Last build: 27/05/2026 11:16 UTC · HaasBot + GitHub Pages</div>
+</body></html>
