@@ -249,6 +249,10 @@ def bot_detail_html(bot_id, data, now_str):
     fin_pos    = data.get("FinishedPositions", [])
     open_ords  = data.get("OpenOrders", [])
 
+    # Use current price from open position if available, fallback to SP
+    if open_pos and open_pos[0].get("cp", 0) > 0:
+        sp = open_pos[0].get("cp", sp)
+
     custom     = data.get("CustomReport", {})
     custom_html = ""
     for section, fields in custom.items():
@@ -270,9 +274,7 @@ def bot_detail_html(bot_id, data, now_str):
     <div class="nav-brand">📊 HaasBot Reports</div>
     <div class="nav-sub">Auto-updated every 2 minutes</div>
   </div>
-  <div class="nav-links">
-    <a href="index.html">← All Bots</a>
-  </div>
+  <div class="nav-links"></div>
 </nav>
 <div class="page">
 
