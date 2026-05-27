@@ -4,7 +4,7 @@ name: Update HaasBot Report
 
 on:
   schedule:
-    - cron: '*/5 * * * *'   # כל 2 דקות
+    - cron: '*/6 * * * *'   # כל 6 דקות
   workflow_dispatch:          # אפשרות הפעלה ידנית
 
 jobs:
